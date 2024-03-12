@@ -1,16 +1,17 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
 
-func commandExit() error {
+func commandExit(cfg *config) error {
 	os.Exit(0)
 	return nil
 }
 
-func commandHelp() error {
+func commandHelp(cfg *config) error {
 	fmt.Println()
 	fmt.Println("Welcome to the Pokedex!")
 	fmt.Println("Usage:")
@@ -22,10 +23,44 @@ func commandHelp() error {
 	return nil
 }
 
+func commandMapF(cfg *config) error {
+	locationsResp, err := cfg.pokeapiClient.ListLocations(cfg.nextLocationsUrl)
+	if err != nil {
+		return err
+	}
+
+	cfg.nextLocationsUrl = locationsResp.Next
+	cfg.prevLocationsUrl = locationsResp.Previous
+
+	for _, location := range locationsResp.Results {
+		fmt.Println(location.Name)
+	}
+	return nil
+}
+
+func commandMapB(cfg *config) error {
+	if cfg.prevLocationsUrl == nil {
+		return errors.New("you're on the first page")
+	}
+
+	locationsResp, err := cfg.pokeapiClient.ListLocations(cfg.prevLocationsUrl)
+	if err != nil {
+		return err
+	}
+
+	cfg.nextLocationsUrl = locationsResp.Next
+	cfg.prevLocationsUrl = locationsResp.Previous
+
+	for _, location := range locationsResp.Results {
+		fmt.Println(location.Name)
+	}
+	return nil
+}
+
 type cliCommand struct {
 	name        string
 	description string
-	callback    func() error
+	callback    func(*config) error
 }
 
 func getCommands() map[string]cliCommand {
@@ -34,6 +69,16 @@ func getCommands() map[string]cliCommand {
 			name:        "help",
 			description: "Displays a help message",
 			callback:    commandHelp,
+		},
+		"map": {
+			name:        "map",
+			description: "List locations",
+			callback:    commandMapF,
+		},
+		"mapb": {
+			name:        "mapb",
+			description: "Get the previous page of locations",
+			callback:    commandMapB,
 		},
 		"exit": {
 			name:        "exit",
