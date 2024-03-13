@@ -8,7 +8,6 @@ type RespShallowPokemons struct {
 		Name string `json:"name"`
 	}
 }
-
 type Pokemon struct {
 	Abilities []struct {
 		Ability struct {
@@ -19,11 +18,7 @@ type Pokemon struct {
 		Slot     int  `json:"slot"`
 	} `json:"abilities"`
 	BaseExperience int `json:"base_experience"`
-	Cries          struct {
-		Latest string `json:"latest"`
-		Legacy string `json:"legacy"`
-	} `json:"cries"`
-	Forms []struct {
+	Forms          []struct {
 		Name string `json:"name"`
 		URL  string `json:"url"`
 	} `json:"forms"`
@@ -34,11 +29,11 @@ type Pokemon struct {
 			URL  string `json:"url"`
 		} `json:"version"`
 	} `json:"game_indices"`
-	Height                 int    `json:"height"`
-	HeldItems              []any  `json:"held_items"`
-	ID                     int    `json:"id"`
-	IsDefault              bool   `json:"is_default"`
-	LocationAreaEncounters string `json:"location_area_encounters"`
+	Height                 int           `json:"height"`
+	HeldItems              []interface{} `json:"held_items"`
+	ID                     int           `json:"id"`
+	IsDefault              bool          `json:"is_default"`
+	LocationAreaEncounters string        `json:"location_area_encounters"`
 	Moves                  []struct {
 		Move struct {
 			Name string `json:"name"`
@@ -56,48 +51,37 @@ type Pokemon struct {
 			} `json:"version_group"`
 		} `json:"version_group_details"`
 	} `json:"moves"`
-	Name          string `json:"name"`
-	Order         int    `json:"order"`
-	PastAbilities []any  `json:"past_abilities"`
-	PastTypes     []any  `json:"past_types"`
-	Species       struct {
+	Name      string        `json:"name"`
+	Order     int           `json:"order"`
+	PastTypes []interface{} `json:"past_types"`
+	Species   struct {
 		Name string `json:"name"`
 		URL  string `json:"url"`
 	} `json:"species"`
 	Sprites struct {
-		BackDefault      string `json:"back_default"`
-		BackFemale       any    `json:"back_female"`
-		BackShiny        string `json:"back_shiny"`
-		BackShinyFemale  any    `json:"back_shiny_female"`
-		FrontDefault     string `json:"front_default"`
-		FrontFemale      any    `json:"front_female"`
-		FrontShiny       string `json:"front_shiny"`
-		FrontShinyFemale any    `json:"front_shiny_female"`
+		BackDefault      string      `json:"back_default"`
+		BackFemale       interface{} `json:"back_female"`
+		BackShiny        string      `json:"back_shiny"`
+		BackShinyFemale  interface{} `json:"back_shiny_female"`
+		FrontDefault     string      `json:"front_default"`
+		FrontFemale      interface{} `json:"front_female"`
+		FrontShiny       string      `json:"front_shiny"`
+		FrontShinyFemale interface{} `json:"front_shiny_female"`
 		Other            struct {
 			DreamWorld struct {
-				FrontDefault string `json:"front_default"`
-				FrontFemale  any    `json:"front_female"`
+				FrontDefault string      `json:"front_default"`
+				FrontFemale  interface{} `json:"front_female"`
 			} `json:"dream_world"`
 			Home struct {
-				FrontDefault     string `json:"front_default"`
-				FrontFemale      any    `json:"front_female"`
-				FrontShiny       string `json:"front_shiny"`
-				FrontShinyFemale any    `json:"front_shiny_female"`
+				FrontDefault     string      `json:"front_default"`
+				FrontFemale      interface{} `json:"front_female"`
+				FrontShiny       string      `json:"front_shiny"`
+				FrontShinyFemale interface{} `json:"front_shiny_female"`
 			} `json:"home"`
 			OfficialArtwork struct {
 				FrontDefault string `json:"front_default"`
 				FrontShiny   string `json:"front_shiny"`
 			} `json:"official-artwork"`
-			Showdown struct {
-				BackDefault      string `json:"back_default"`
-				BackFemale       any    `json:"back_female"`
-				BackShiny        string `json:"back_shiny"`
-				BackShinyFemale  any    `json:"back_shiny_female"`
-				FrontDefault     string `json:"front_default"`
-				FrontFemale      any    `json:"front_female"`
-				FrontShiny       string `json:"front_shiny"`
-				FrontShinyFemale any    `json:"front_shiny_female"`
-			} `json:"showdown"`
 		} `json:"other"`
 		Versions struct {
 			GenerationI struct {
@@ -164,88 +148,88 @@ type Pokemon struct {
 			} `json:"generation-iii"`
 			GenerationIv struct {
 				DiamondPearl struct {
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string      `json:"back_default"`
+					BackFemale       interface{} `json:"back_female"`
+					BackShiny        string      `json:"back_shiny"`
+					BackShinyFemale  interface{} `json:"back_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"diamond-pearl"`
 				HeartgoldSoulsilver struct {
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string      `json:"back_default"`
+					BackFemale       interface{} `json:"back_female"`
+					BackShiny        string      `json:"back_shiny"`
+					BackShinyFemale  interface{} `json:"back_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"heartgold-soulsilver"`
 				Platinum struct {
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string      `json:"back_default"`
+					BackFemale       interface{} `json:"back_female"`
+					BackShiny        string      `json:"back_shiny"`
+					BackShinyFemale  interface{} `json:"back_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"platinum"`
 			} `json:"generation-iv"`
 			GenerationV struct {
 				BlackWhite struct {
 					Animated struct {
-						BackDefault      string `json:"back_default"`
-						BackFemale       any    `json:"back_female"`
-						BackShiny        string `json:"back_shiny"`
-						BackShinyFemale  any    `json:"back_shiny_female"`
-						FrontDefault     string `json:"front_default"`
-						FrontFemale      any    `json:"front_female"`
-						FrontShiny       string `json:"front_shiny"`
-						FrontShinyFemale any    `json:"front_shiny_female"`
+						BackDefault      string      `json:"back_default"`
+						BackFemale       interface{} `json:"back_female"`
+						BackShiny        string      `json:"back_shiny"`
+						BackShinyFemale  interface{} `json:"back_shiny_female"`
+						FrontDefault     string      `json:"front_default"`
+						FrontFemale      interface{} `json:"front_female"`
+						FrontShiny       string      `json:"front_shiny"`
+						FrontShinyFemale interface{} `json:"front_shiny_female"`
 					} `json:"animated"`
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string      `json:"back_default"`
+					BackFemale       interface{} `json:"back_female"`
+					BackShiny        string      `json:"back_shiny"`
+					BackShinyFemale  interface{} `json:"back_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"black-white"`
 			} `json:"generation-v"`
 			GenerationVi struct {
 				OmegarubyAlphasapphire struct {
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"omegaruby-alphasapphire"`
 				XY struct {
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"x-y"`
 			} `json:"generation-vi"`
 			GenerationVii struct {
 				Icons struct {
-					FrontDefault string `json:"front_default"`
-					FrontFemale  any    `json:"front_female"`
+					FrontDefault string      `json:"front_default"`
+					FrontFemale  interface{} `json:"front_female"`
 				} `json:"icons"`
 				UltraSunUltraMoon struct {
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					FrontDefault     string      `json:"front_default"`
+					FrontFemale      interface{} `json:"front_female"`
+					FrontShiny       string      `json:"front_shiny"`
+					FrontShinyFemale interface{} `json:"front_shiny_female"`
 				} `json:"ultra-sun-ultra-moon"`
 			} `json:"generation-vii"`
 			GenerationViii struct {
 				Icons struct {
-					FrontDefault string `json:"front_default"`
-					FrontFemale  any    `json:"front_female"`
+					FrontDefault string      `json:"front_default"`
+					FrontFemale  interface{} `json:"front_female"`
 				} `json:"icons"`
 			} `json:"generation-viii"`
 		} `json:"versions"`
